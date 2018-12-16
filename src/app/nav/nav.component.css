@@ -1,0 +1,25 @@
+header {
+    background: #333333;
+}
+header .logo {
+    font-weight: bold;
+}
+header nav {
+    justify-self: right;
+}
+header ul {
+    list-style-type: none;
+    margin: 0; padding: 0;
+}
+header ul li {
+    float: left;
+}
+a {
+    padding: 1.5em;
+    text-transform: uppercase;
+    font-size: .8em;
+    color: #FFFFFF;
+}
+a:hover {
+    color: rgb(186, 170, 204);
+}

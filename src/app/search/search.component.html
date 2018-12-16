@@ -1,0 +1,85 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+
+  <div _ngcontent-c0="" class="search-form">
+    
+    <div _ngcontent-c0="" class="col-sm-6">
+      <h5 _ngcontent-c0="">Source:</h5>
+      <mat-form-field>
+        <input type="text" aria-label="Number" matInput formControlName="source" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of sourceOptions | async" [value]="option">
+              {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div *ngIf="submitted && searchForm.controls.source.errors" class="error">
+        <div *ngIf="searchForm.controls.source.errors.required">Your source is required</div>
+      </div>
+    </div>
+
+    <div _ngcontent-c0="" class="col-sm-6">
+      <h5 _ngcontent-c0="">Destination:</h5>
+      <mat-form-field>
+        <input type="text" aria-label="Number" matInput formControlName="destination" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of destOptions | async" [value]="option">
+              {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div *ngIf="submitted && searchForm.controls.destination.errors" class="error">
+        <div *ngIf="searchForm.controls.destination.errors.required">Destination is required</div>
+      </div>
+    </div>    
+  
+    <div _ngcontent-c0="" class="col-sm-6">
+      <h5 _ngcontent-c0="">Departure Date:</h5>
+      <input id="departureDate" type="date" formControlName="departureDate">      
+    </div> 
+
+    <div _ngcontent-c0="" class="col-sm-6">
+      <h5 _ngcontent-c0="">Arrival Date:</h5>
+      <input id="arrivalDate" type="date" formControlName="arrivalDate">      
+    </div> 
+  
+    <div _ngcontent-c0="" class="col-sm-4">
+      <h5 _ngcontent-c0="">Num. of adults:</h5>
+      <input id="numAdults" type="number" formControlName="numAdults">      
+    </div> 
+    
+    <div _ngcontent-c0="" class="col-sm-4">
+      <h5 _ngcontent-c0="">Num. of children:</h5>
+      <input id="numChildren" type="number" formControlName="numChildren">      
+    </div> 
+    
+    <div _ngcontent-c0="" class="col-sm-4">
+      <h5 _ngcontent-c0="">Num. of infants:</h5>
+      <input id="numInfants" type="number" formControlName="numInfants">      
+    </div> 
+    
+    <br>
+    <div _ngcontent-c0="" class="col-sm-4">
+      <input type="submit" value="Search" class="submitBtn"/>
+      <h5 *ngIf="submitted && !success"><img src="assets/img/spinner.gif"></h5>
+    </div>  
+  </div>  
+</form>
+
+<div *ngIf="success && availableFlights.length > 0 && weather" class="weather col-sm-4">
+  <!-- instead of static pic for weather, we could use own custom ones or the one from API because we got image code in the model data -->
+  <img src="./../../assets/img/cloud.png" class="weatherImg">    
+  <label>Weather on arrival date - {{ weather.weather[0].description }}</label>
+
+  <label>Temp: {{ weather.main.temp }} C</label>
+  <label>Wind speed: {{ weather.wind.speed }}</label>
+</div>
+
+<div *ngIf="success && availableFlights.length > 0" class="row resultsGrid"> 
+<kendo-grid [data]="availableFlights" [height]="410">
+  <kendo-grid-column field="airline" title="Carrier Name"></kendo-grid-column>
+  <kendo-grid-column field="fulldepdate" title="Departure Date / Time" ></kendo-grid-column>
+  <kendo-grid-column field="fullarrdate" title="Arrival Date / Time"></kendo-grid-column>
+  <kendo-grid-column field="stops" title="Direct / Number of stops" ></kendo-grid-column>
+  <kendo-grid-column field="fullflightno" title="Flight Number" ></kendo-grid-column>
+</kendo-grid>
+</div>

@@ -1,0 +1,78 @@
+label {
+    display: block;
+}
+
+input, textarea {
+    display: block;
+    width: 50%;
+    padding: 0.5em;
+}
+
+.error {
+    margin-top: -20px;
+    color: darkred;
+    padding: .5em;
+    display: inline-block;
+    font-size: .9em;
+    margin-bottom: 20px;
+}
+
+.submitBtn {
+    background: rgb(89, 85, 94);
+    border: none;
+    color: white;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 1em;
+    cursor: pointer;
+    font-family: 'Montserrat';
+    margin: 20px 0px;
+}
+
+.results {
+    margin-top: 50px; 
+}
+.results strong {
+    display: block;
+}
+.results span {
+    margin-bottom: 20px;
+    display: block;
+}
+
+.resultsGrid {
+    margin: 30px 0px;
+}
+
+.search-form {
+    width: 50%;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0em;
+    border-top: 0em; 
+}
+
+::ng-deep .mat-form-field {
+    width: 100%;
+}
+
+::ng-deep input[_ngcontent-c2] {
+    width: 100%;
+}
+
+.row {
+    display: block;
+    clear: both;
+}
+
+.weather {
+    padding: 30px; 
+    width: 25%;
+    float: right;
+}
+
+.weatherImg {
+    width: 100%;
+}

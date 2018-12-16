@@ -1,0 +1,11 @@
+<header>
+  <div class="container">
+    <a routerLink="/search" class="">Search Flight</a>
+    <nav>
+      <ul *ngIf=loggedIn>
+        <li class="pt20"><a routerLink="/signin">Sign in</a></li>
+        <li class="pt20"><a routerLink="/signup">Sign up</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

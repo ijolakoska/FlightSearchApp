@@ -1,0 +1,5 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+::ng-deep body {
+    background-color: gainsboro;
+}
